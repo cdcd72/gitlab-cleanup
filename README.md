@@ -1,5 +1,21 @@
 # GitLab Cleanup
 
+**WARNING**: Applying the script delete job artifacts. I recommend, that you test it first with a sample repository in order to see what gets deleted. 
+
+You can fill up the space taken up by your repo by filling it with artifacts containing only random data.
+
+To this end, you may use the following `gitlab-ci.yml` which creates 512MB data-chunks each time `job` runs:
+
+```yaml
+job:
+  image: ubuntu
+  script:
+    - dd if=/dev/urandom of=out.txt bs=1MB count=512
+  artifacts:
+    paths:
+      - out.txt
+```
+
 ## Utilities
 
 ### `delete_artifacts.py`
@@ -33,3 +49,4 @@ The program will then output the respectve jobs and return the response code.
 #### Response codes
 
 `<Response [204]>` file deleted successfully
+

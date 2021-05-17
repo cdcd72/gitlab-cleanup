@@ -2,7 +2,8 @@
 
 If you feel, that old artifacts are taking up to much space but you don't want to [delete them manually](https://docs.gitlab.com/ee/ci/pipelines/job_artifacts.html#delete-job-artifacts).
 
-Warning: Running the script is a destructive action that leads to data loss. Use with caution.
+**WARNING** Running `delete_artifacts.py` is a destructive action that leads to data loss. Use with caution. **WARNING**
+
 
 ## Example Repo
 

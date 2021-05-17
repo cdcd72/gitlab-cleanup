@@ -1,6 +1,10 @@
 # GitLab Cleanup
 
-**WARNING**: Applying the script delete job artifacts. I recommend, that you test it first with a sample repository in order to see what gets deleted. 
+If you feel, that old artifacts are taking up to much space but you don't want to [delete them manually](https://docs.gitlab.com/ee/ci/pipelines/job_artifacts.html#delete-job-artifacts).
+
+Warning: Running the script is a destructive action that leads to data loss. Use with caution.
+
+## Example Repo
 
 You can fill up the space taken up by your repo by filling it with artifacts containing only random data.
 
@@ -20,7 +24,7 @@ job:
 
 ### `delete_artifacts.py`
 
-If you feel, that old artifacts are taking up to much space but you don't want to delete them manually.
+
 
 Just adapt the header of `delete_artifacts`
 

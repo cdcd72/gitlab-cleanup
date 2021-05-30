@@ -1,3 +1,5 @@
+Inspired by [https://stackoverflow.com/q/42512733/](https://stackoverflow.com/q/42512733/).
+
 # GitLab Cleanup
 
 If you feel, that old artifacts are taking up to much space but you don't want to [delete them manually](https://docs.gitlab.com/ee/ci/pipelines/job_artifacts.html#delete-job-artifacts).

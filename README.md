@@ -1,4 +1,5 @@
-Inspired by [https://stackoverflow.com/q/42512733/](https://stackoverflow.com/q/42512733/).
+Inspired by [https://stackoverflow.com/q/42512733/](https://stackoverflow.com/q/42512733/) and the useful features of [Postman](https://www.postman.com/)
+
 
 # GitLab Cleanup
 
@@ -6,6 +7,7 @@ If you feel, that old artifacts are taking up to much space but you don't want t
 
 **WARNING** Running `delete_artifacts.py` is a destructive action that leads to data loss. Use with caution. **WARNING**
 
+Same goes for issues that got automatically created. In this case use `delete_issues.py`.
 
 ## Example Repo
 
@@ -27,9 +29,7 @@ job:
 
 ### `delete_artifacts.py`
 
-
-
-Just adapt the header of `delete_artifacts`
+Just adapt the values in `config.py`
 
 ```python
 # adapt accordingly
@@ -57,3 +57,4 @@ The program will then output the respectve jobs and return the response code.
 
 `<Response [204]>` file deleted successfully
 
+Similarly for `delete_issues.py`.

@@ -3,11 +3,7 @@
 
 import json
 import requests
-
-# adapt accordingly
-base_url='https://gitlab.example.com'
-project_id='1234'
-access_token='12341234'
+from config import *
 
 #
 # Get Version Tested with Version 13.11.3

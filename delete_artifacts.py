@@ -1,41 +1,40 @@
-#!/bin/python3
-# delete_artifacts.py  
-
 import json
 import requests
 from config import *
 
+api_url = f"{base_url}/api/v4"
+
 #
-# Get Version Tested with Version 13.11.3
+# Get Version
 # cf. https://docs.gitlab.com/ee/api/version.html#version-api
 #
-print(f'GET /version')
-x= (requests.get(f"{base_url}/api/v4/version", headers = {"PRIVATE-TOKEN": access_token }))
-print(x)
-data=json.loads(x.text)
-print(f'Using GitLab version {data["version"]}. Tested with 13.11.3')
+url = f"{api_url}/version"
+print(f"GET {url}")
+response = requests.get(url, headers={"PRIVATE-TOKEN": access_token})
+print(response)
+data = json.loads(response.text)
+print(f'Using GitLab version {data["version"]}.')
 
 #
 # List project jobs
 # cf. https://docs.gitlab.com/ee/api/jobs.html#list-project-jobs
 #
-request_str=f'projects/{project_id}/jobs'
-url=f'{base_url}/api/v4/{request_str}'
-print(f'GET /{request_str}')
-x= (requests.get(url, headers = {"PRIVATE-TOKEN": access_token }))
-print(x)
-data=json.loads(x.text)
+url = f"{api_url}/projects/{project_id}/jobs"
+print(f"GET {url}")
+response = requests.get(url, headers={"PRIVATE-TOKEN": access_token})
+print(response)
+data = json.loads(response.text)
 
-input('WARNING: This will delete all artifacts. Job logs will remain be available. Press Enter to continue...' )
+input(
+    "WARNING: This will delete all artifacts. Job logs will remain be available. Press Enter to continue..."
+)
 
 #
-# Delete job artifacts
+# Delete artifacts per job
 # cf. https://docs.gitlab.com/ee/api/job_artifacts.html#delete-artifacts
 #
 for entry in data:
-    request_str=f'projects/{project_id}/jobs/{entry["id"]}/artifacts'
-    url=f'{base_url}/api/v4/{request_str}'
-    print(f'DELETE /{request_str}')
-    x = requests.delete(url, headers = {"PRIVATE-TOKEN": access_token })
-    print(x)
-
+    url = f"{api_url}/projects/{project_id}/jobs/{entry['id']}/artifacts"
+    print(f"DELETE {url}")
+    response = requests.delete(url, headers={"PRIVATE-TOKEN": access_token})
+    print(response)
